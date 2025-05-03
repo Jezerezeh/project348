@@ -1,0 +1,10 @@
+{% if card_list %}
+<ul>
+    {% for card in card_list %}
+        <li><a href="/cards/{{ card.card_name }}/">{{ card.card_name }}</a></li>
+    {% endfor %}
+    <li><a href="/cards/create">Add New Card</a></li>
+</ul>
+{% else %}
+<p>Card List Not Found!</p>
+{% endif %}

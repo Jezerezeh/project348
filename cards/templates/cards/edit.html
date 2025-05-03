@@ -1,0 +1,55 @@
+{% if card %}
+<ul>
+    <form action="{% url 'update' card.card_name %}" method="post">
+        {% csrf_token %}
+        <p>Card Name: {{card.card_name}}</p><br>
+        <label for="mana_cost">Mana Cost: </label>
+        <input type="text" id="mana_cost" name="mana_cost" placeholder="{{card.mana_cost}}"><br>
+        <label for="color">Color: </label>
+        <input type="text" id="color" name="color" placeholder="{{card.color}}"><br>
+        <label>Supertype: {{supertype}}</label><br>
+        <input type="radio" id="basic" name="supertype" value="BASIC">
+        <label for="basic">Basic</label><br>
+        <input type="radio" id="legendary" name="supertype" value="LEGENDARY">
+        <label for="legendary">Legendary</label><br>
+        <input type="radio" id="snow" name="supertype" value="SNOW">
+        <label for="snow">Snow</label><br>
+        <input type="radio" id="world" name="supertype" value="WORLD">
+        <label for="world">World</label><br>
+        <label>Card Type: {{card_type}}</label><br>
+        <input type="radio" id="creature" name="card_type" value="CREATURE">
+        <label for="creature">Creature</label><br>
+        <input type="radio" id="instant" name="card_type" value="INSTANT">
+        <label for="instant">Instant</label><br>
+        <input type="radio" id="sorcery" name="card_type" value="SORCERY">
+        <label for="sorcery">Sorcery</label><br>
+        <input type="radio" id="enchantment" name="card_type" value="ENCHANTMENT">
+        <label for="enchantment">Enchantment</label><br>
+        <input type="radio" id="artifact" name="card_type" value="ARTIFACT">
+        <label for="artifact">Artifact</label><br>
+        <input type="radio" id="planeswalker" name="card_type" value="PLANESWALKER">
+        <label for="planeswalker">Planeswalker</label><br>
+        <input type="radio" id="battle" name="card_type" value="BATTLE">
+        <label for="battle">Battle</label><br>
+        <input type="radio" id="land" name="card_type" value="LAND">
+        <label for="land">Land</label><br>
+        <label for="subtype">Subtype: =</label>
+        <input type="text" id="subtype" name="subtype" placeholder="{{subtype}}"><br>
+        <label for="rules_text">Rules Text: </label>
+        <input type="text" id="rules_text" name="rules_text" placeholder="{{card.rules_text}}"><br>
+        <label for="flavor_text">Flavor Text: </label>
+        <input type="text" id="flavor_text" name="flavor_text" placeholder="{{card.flavor_text}}"><br>
+        <label for="stats">Stats: </label>
+        <input type="text" id="stats" name="stats" placeholder="{{card.stats}}"><br>
+        <label for="set">Set: </label>
+        <input type="text" id="set" name="set" placeholder="{{card.set}}"><br>
+        <input type="submit" value="Update">
+    </form>
+    <form action="{% url 'delete' card.card_name %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+</ul>
+{% else %}
+<p>Card Not Found!</p>
+{% endif %}
